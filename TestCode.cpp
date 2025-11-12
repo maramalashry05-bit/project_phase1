@@ -2,8 +2,6 @@
 #include "GUI\Output.h"
 
 //This is a test code to test the Input and Output classes 
-// Maram was here..............
-// Marwan was here too :D.....
 
 int main()
 {
