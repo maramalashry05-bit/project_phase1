@@ -2,6 +2,7 @@
 #include "GUI\Output.h"
 
 //This is a test code to test the Input and Output classes
+// ****HI****
 
 int main()
 {
