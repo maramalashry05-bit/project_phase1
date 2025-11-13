@@ -11,16 +11,44 @@ void Input::GetPointClicked(int &x, int &y)
 	pWind->WaitMouseClick(x, y);	//Wait for mouse click
 }
 
-string Input::GetSrting(Output *pOut)
+string Input::GetSrting(Output* pOut)
 {
-	///TODO: Implement this Function
-	//Read a complete string from the user until the user presses "ENTER".
-	//If the user presses "ESCAPE". This function should return an empty string.
-	//"BACKSPACE" should be also supported
-	//User should see what he is typing at the status bar
+	string userInput = "";   // To store the typed string
+	char key;
 
-	return NULL;
+	while (true)
+	{
+		pWind->WaitKeyPress(key);// Wait for a key press
+
+		if (key == 27)  // ESCAPE key
+		{
+			userInput = "";  // Return empty string
+			break;
+		}
+		else if (key == 13) // ENTER key
+		{
+			break;  // Finished typing
+		}
+		else if (key == 8) // BACKSPACE key
+		{
+			if (!userInput.empty())
+			{
+				userInput.pop_back();           // Remove last character
+				pOut->PrintMsg(userInput);     // Update status bar
+			}
+		}
+		else
+		{
+			userInput += key;                   // Append character
+			pOut->PrintMsg(userInput);          // Update status bar
+		}
+	}
+
+	return userInput;  // Return the typed string
 }
+
+
+
 
 //This function reads the position where the user clicks to determine the desired action
 ActionType Input::GetUserAction() const

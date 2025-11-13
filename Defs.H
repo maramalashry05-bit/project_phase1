@@ -66,13 +66,17 @@ enum DsgnMenuItem //The items of the design menu (you should add more items)
 {
 	//Note: Items are ordered here as they appear in menu
 	//If you want to change the menu items order, change the order here
-	ITM_AND2,		//AND gate item in menu
-	ITM_OR2,		//OR gate item in menu
-	
-	ITM_EXIT,		//Exit item
-	//TODO: Add more items names here
-	
-	ITM_DSN_CNT		//no. of design menu items ==> This should be the last line in this enum
+	ITM_AND2,
+	ITM_OR2,
+	ITM_NAND2,
+	ITM_NOR2,
+	ITM_XOR2,
+	ITM_XNOR2,
+	ITM_Switch,
+	ITM_LED,
+	ITM_EXIT,
+
+	ITM_DSN_CNT
 	
 };
 
@@ -83,7 +87,8 @@ enum SimMenuItem //The items of the simulation menu (you should add more items)
 	ITM_SIM,	//Simulate menu item
 	ITM_TRUTH,	//Truth table menu item
 	
-	//TODO:Add more items names here
+	ITM_SWITCH_CHANGE, // change switch state
+	ITM_EXIT_SIM,
 	
 	ITM_SIM_CNT		//no. of simulation menu items ==> This should be the last line in this enum
 	
@@ -95,7 +100,17 @@ enum SimMenuItem //The items of the simulation menu (you should add more items)
 //assume fan out is 5 for now it can be read from the user or can be predefined as const
 enum FANOUT
 {
-	AND2_FANOUT = 5	//Default fan out of 2-input AND gate
+	AND2_FANOUT = 5,    // 2-input AND gate
+	OR2_FANOUT = 5,    // 2-input OR gate
+	NAND2_FANOUT = 5,   // 2-input NAND gate
+	NOR2_FANOUT = 5,    // 2-input NOR gate
+	XOR2_FANOUT = 5,    // 2-input XOR gate
+	XNOR2_FANOUT = 5,   // 2-input XNOR gate
+	AND3_FANOUT = 5,    // 3-input AND gate
+	NOR3_FANOUT = 5,    // 3-input NOR gate
+	XOR3_FANOUT = 5,    // 3-input XOR gate
+	BUFF_FANOUT = 5,    // Buffer gate
+	INV_FANOUT = 5     // Inverter gate
 };
 
 //A structure to contain drawing parameters for each component

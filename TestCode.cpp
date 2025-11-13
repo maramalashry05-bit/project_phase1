@@ -120,8 +120,17 @@ int main()
 	
 	pOut->PrintMsg("Testing Input ability to read strings");
 
-	///TODO: Add code here to 
-	// 1- Read a string from the user on the status bar and print it inside the drawing area
+	// Ask the user to type a string
+	pOut->PrintMsg("Please type a string and press ENTER:");
+
+	// Call GetSrting to read the string from user
+	string userInput = pIn->GetSrting(pOut);
+
+	// Clear the status bar
+	pOut->PrintMsg("");
+
+	// Print the typed string in the drawing area at coordinates (100,100)
+	pOut->PrintMsg("You typed: " + userInput);
 
 
 	pIn->GetPointClicked(x,y);	//Wait for any click
