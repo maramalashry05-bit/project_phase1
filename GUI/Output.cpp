@@ -94,7 +94,35 @@ void Output::CreateDesignToolBar() const
 	//First prepare List of images for each menu item
 	string MenuItemImages[ITM_DSN_CNT];
 	MenuItemImages[ITM_AND2] = "images\\Menu\\Menu_AND2.jpg";
-	MenuItemImages[ITM_OR2]  = "images\\Menu\\Menu_OR2.jpg";
+	MenuItemImages[ITM_AND3] = "images\\Menu\\Menu_AND3.jpg";
+	MenuItemImages[ITM_NAND2] = "images\\Menu\\Menu_NAND2.jpg";
+	MenuItemImages[ITM_NAND3] = "images\\Menu\\Menu_NAND3.jpg";
+	MenuItemImages[ITM_OR2] = "images\\Menu\\Menu_OR2.jpg";
+	MenuItemImages[ITM_OR3] = "images\\Menu\\Menu_OR3.jpg";
+	MenuItemImages[ITM_NOR2] = "images\\Menu\\Menu_NOR2.jpg";
+	MenuItemImages[ITM_NOR3]  = "images\\Menu\\Menu_NOR3.jpg";
+	MenuItemImages[ITM_XOR2] = "images\\Menu\\Menu_XOR2.jpg";
+	MenuItemImages[ITM_XOR3] = "images\\Menu\\Menu_XOR3.jpg";
+	MenuItemImages[ITM_XNOR2] = "images\\Menu\\Menu_XNOR2.jpg";
+	MenuItemImages[ITM_XNOR3] = "images\\Menu\\Menu_XNOR3.jpg";
+	MenuItemImages[ITM_SWITCH] = "images\\Menu\\Menu_Switch.jpg";
+	MenuItemImages[ITM_LED] =  "images\\Menu\\Menu_Led.jpg";
+	MenuItemImages[ITM_CONNECTION] = "images\\Menu\\Menu_Connection.jpg";
+	MenuItemImages[ITM_ADD_LABEL] = "images\\Menu\\Menu_Add_Label.jpg";
+	MenuItemImages[ITM_EDIT_LABEL] = "images\\Menu\\Menu_Edit_Label.jpg";
+	MenuItemImages[ITM_SELECT] = "images\\Menu\\Menu_Select.jpg";
+	MenuItemImages[ITM_MOVE] = "images\\Menu\\Menu_Move.jpg";
+	MenuItemImages[ITM_DEL] = "images\\Menu\\Menu_Delete.jpg";
+	MenuItemImages[ITM_COPY] = "images\\Menu\\Menu_Copy.jpg";
+	MenuItemImages[ITM_CUT] = "images\\Menu\\Menu_Cut.jpg";
+	MenuItemImages[ITM_PASTE] = "images\\Menu\\Menu_Paste.jpg";
+	MenuItemImages[ITM_UNDO] = "images\\Menu\\Menu_Undo.jpg";
+	MenuItemImages[ITM_REDO] = "images\\Menu\\Menu_Redo.jpg";
+
+	MenuItemImages[ITM_SAVE] = "images\\Menu\\Menu_Save.jpg";
+	MenuItemImages[ITM_LOAD] = "images\\Menu\\Menu_Load.jpg";
+	MenuItemImages[ITM_SIM_MODE] = "images\\Menu\\Menu_Simulation_Mode.jpg";
+
 	MenuItemImages[ITM_EXIT] = "images\\Menu\\Menu_Exit.jpg";
 
 	//TODO: Prepare image for each menu item and add it to the list
@@ -116,6 +144,24 @@ void Output::CreateSimulationToolBar() const
 	UI.AppMode = SIMULATION;	//Simulation Mode
 
 	//TODO: Write code to draw the simualtion toolbar (similar to that of design toolbar drawing)
+	string MenuItemImages[ITM_SIM_CNT];
+	MenuItemImages[ITM_SIM] = "images\\Menu\\Menu_Start_Simulation.jpg";
+	MenuItemImages[ITM_TRUTH] = "images\\Menu\\Menu_Create_Truth_Table.jpg";
+	MenuItemImages[ITM_SWITCH_CHANGE] = "images\\Menu\\Menu_Change_Switch.jpg";
+	MenuItemImages[ITM_CHECK_VALIDATION] = "images\\Menu\\Menu_Check_Validation.jpg";
+	MenuItemImages[ITM_INSPECT_VALUE] = "images\\Menu\\Menu_Exit.jpg";
+	MenuItemImages[ITM_DSN_MODE] = "images\\Menu\\Menu_Design_Mode.jpg";
+
+
+
+	//Draw menu item one image at a time
+	for (int i = 0; i < ITM_SIM_CNT; i++)
+		pWind->DrawImage(MenuItemImages[i], i * UI.ToolItemWidth, 0, UI.ToolItemWidth, UI.ToolBarHeight);
+
+
+	//Draw a line under the toolbar
+	pWind->SetPen(RED, 3);
+	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
 
 
 }
@@ -135,6 +181,46 @@ void Output::DrawAND2(GraphicsInfo r_GfxInfo, bool selected) const
 	//Draw AND2 Gate at Gfx_Info (1st corner)
 	//Set the Image Width & Height by AND2 Image Parameter in UI_Info
 	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+}
+
+void Output::DrawAND3(GraphicsInfo r_GfxInfo, bool selected) const
+{
+	string GateImage;
+	if (selected)	//use image in the highlighted case
+		GateImage = "Images\\Gates\\Gate_AND3_Hi.jpg";
+	else
+		GateImage = "Images\\Gates\\Gate_AND3.jpg";
+
+	
+	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+}
+
+void Output::DrawNAND2(GraphicsInfo r_GfxInfo, bool selected) const
+{
+	string GateImage;
+	if (selected)	//use image in the highlighted case
+		GateImage = "Images\\Gates\\Gate_NAND2_Hi.jpg";
+	else
+		GateImage = "Images\\Gates\\Gate_NAND2.jpg";
+
+	
+	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+}
+
+void Output::DrawNAND3(GraphicsInfo r_GfxInfo, bool selected) const
+{
+	string GateImage;
+	if (selected)	//use image in the highlighted case
+		GateImage = "Images\\Gates\\Gate_NAND3_Hi.jpg";
+	else
+		GateImage = "Images\\Gates\\Gate_NAND3.jpg";
+
+	
+	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+}
+
+void Output::DrawSwitch(GraphicsInfo r_GfxInfo, bool selected) const
+{
 }
 
 //TODO: Add similar functions to draw all components

@@ -26,19 +26,19 @@ enum ActionType
 
 	Create_TruthTable,	// Create Truth Table of the Circuit
 	Change_Switch,		// Change Switch Status in Simulation Mode
+	Check_Validation,    // Check all pins are connected and no component is floating
+	Inspect_Value,       // Inspect the value of any pin or connection
 
 	SELECT,				// Select a Component or Connection
-	UNSELECT,			// Unselect a Component or Connection
+	
 	MOVE,				// Move a Component or Connection
 	DEL,				// Delete a Component or Connection
 
-	// ==== Newly added features from project requirements ====
+	
 	COPY,				// Copy a component without connections
 	CUT,				// Cut a component and its connections
 	PASTE,				// Paste a copied or cut component
-	MULTI_SELECT,		// Select multiple components/connections
-	MULTI_MOVE,			// Move multiple selected components
-	MULTI_DELETE,		// Delete multiple selected components
+	
 
 	SAVE,				// Save the whole Circuit to a file
 	LOAD,				// Load a Circuit from a file
@@ -73,30 +73,42 @@ enum DsgnMenuItem //The items of the design menu (you should add more items)
 {
 	//Note: Items are ordered here as they appear in menu
 	//If you want to change the menu items order, change the order here
-	ITM_AND2,
-	ITM_OR2,
-	ITM_NAND2,
-	ITM_NOR2,
-	ITM_XOR2,
-	ITM_XNOR2,
-	ITM_Switch,
-	ITM_LED,
-	ITM_ADD_CONNECTION,
-	ITM_ADD_LABEL,
-	ITM_EDIT_LABEL,
+	ITM_AND2,           // Add a 2 input AND gate
+	ITM_AND3,           // Add a 3 input AND gate
+	ITM_NAND2,          // Add a 2 input NAND gate
+	ITM_NAND3,          // Add a 3 input NAND gate
+	ITM_OR2,            // Add a 2 input OR gate
+	ITM_OR3,            // Add a 3 input OR gate
+	ITM_NOR2,           // Add a 2 input NOR gate
+	ITM_NOR3,           // Add a 3 input NOR gate
+	ITM_XOR2,           // Add a 2 input XOR gate 
+	ITM_XOR3,           // Add a 3 input XOR gate
+	ITM_XNOR2,          // Add a 2 input XNOR gate
+	ITM_XNOR3,          // Add a 3 input XNOR gate
 
-	// ==== Newly added menu items ====
+	ITM_SWITCH,         // Add a Switch
+	ITM_LED,            // Add a Led    
+	ITM_CONNECTION,     // Add a Connection
+
+	ITM_ADD_LABEL,      // Add Label
+	ITM_EDIT_LABEL,     // Edit label
+
 	ITM_COPY,			// Copy a component
 	ITM_CUT,			// Cut a component
-	ITM_PASTE,			// Paste a component
-	ITM_MULTISELECT,	// Multi-selection option
+	ITM_PASTE,          // Paste a component
+	 
+	ITM_SELECT,	        // Select component(s)
 	ITM_MOVE,			// Move component(s)
 	ITM_DEL,			// Delete component(s)
+
 	ITM_SAVE,			// Save circuit
 	ITM_LOAD,			// Load circuit
+
 	ITM_UNDO,			// Undo last action
 	ITM_REDO,			// Redo last action
-	ITM_SWITCH_SIM,		// Switch to Simulation mode
+
+	ITM_SIM_MODE,		// Switch to Simulation mode
+
 	ITM_EXIT,			// Exit the application
 
 	ITM_DSN_CNT			// Must be last (count of items)
@@ -106,13 +118,15 @@ enum DsgnMenuItem //The items of the design menu (you should add more items)
 enum SimMenuItem //The items of the simulation menu (you should add more items)
 {
 	//Note: Items are ordered here as they appear in menu
-	ITM_SIM,			// Start simulation
-	ITM_TRUTH,			// Truth table
-	ITM_SWITCH_CHANGE,	// Change switch state
-	ITM_DSN_MODE,		// Return to design mode
-	ITM_EXIT_SIM,		// Exit from simulation
+	ITM_SIM,			  // Start simulation
+	ITM_TRUTH,			  // Truth table
+	ITM_SWITCH_CHANGE,	  // Change switch state
+	ITM_CHECK_VALIDATION, // Check Validation of components
+	ITM_INSPECT_VALUE,     // Inspect the value of pins or components
+	ITM_DSN_MODE,		  // Return to design mode
+	
 
-	ITM_SIM_CNT			// Count of simulation menu items (must be last)
+	ITM_SIM_CNT			  // Count of simulation menu items (must be last)
 };
 
 //Maximum number of input pins that can be connected to any output pin

@@ -54,6 +54,14 @@ int main()
 
 	///TODO: Add code to draw 2-input NAND gate, Normal and Highlighted
 
+	//Drawing Normal NAND2 gate
+	GfxInfo.x1 = 100;	GfxInfo.y1 = 100;
+	pOut->DrawAND2(GfxInfo);
+
+	//Drawing Highlighted NAND2 gate
+	GfxInfo.x1 = 100;	GfxInfo.y1 = 200;
+	pOut->DrawNAND2(GfxInfo, true);
+
 	pIn->GetPointClicked(x,y);	//Wait for any click
 	pOut->ClearDrawingArea();
 
@@ -86,6 +94,7 @@ int main()
 	pOut->PrintMsg("Drawing 3-input AND, NOR, XOR Gates, Normal and Highlighted,  Click to continue");
 	
 	///TODO: Add code to draw 3-input AND, NOR, and XOR Gates, Normal and Highlighted for each
+
 
 	pIn->GetPointClicked(x,y);	//Wait for any click
 	pOut->ClearDrawingArea();
