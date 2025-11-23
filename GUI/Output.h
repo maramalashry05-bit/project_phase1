@@ -27,6 +27,17 @@ public:
 	void DrawNAND2(GraphicsInfo r_GfxInfo, bool selected = false) const;
 	void DrawNAND3(GraphicsInfo r_GfxInfo, bool selected = false) const;
 	void DrawSwitch(GraphicsInfo r_GfxInfo, bool selected = false) const;
+	void DrawINV(GraphicsInfo r_GfxInfo, bool selected = false) const;
+	void DrawXOR2(GraphicsInfo r_GfxInfo, bool selected = false) const;
+	void DrawXOR3(GraphicsInfo r_GfxInfo, bool selected = false) const;
+	void DrawXNOR2(GraphicsInfo r_GfxInfo, bool selected = false) const;
+	void DrawXNOR3(GraphicsInfo r_GfxInfo, bool selected = false) const;
+	void DrawOR2(GraphicsInfo r_GfxInfo, bool selected = false) const;
+	void DrawOR3(GraphicsInfo r_GfxInfo, bool selected = false) const;
+	void DrawNOR2(GraphicsInfo r_GfxInfo, bool selected = false) const;
+	void DrawNOR3(GraphicsInfo r_GfxInfo, bool selected = false) const;
+	void DrawBUFF(GraphicsInfo r_GfxInfo, bool selected = false) const;
+	void DrawLED(GraphicsInfo r_GfxInfo, bool selected = false) const;
 
 	///TODO: Make similar functions for drawing all other gates, switch, and LED, .. etc
 
