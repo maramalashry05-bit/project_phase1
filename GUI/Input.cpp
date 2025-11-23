@@ -152,7 +152,7 @@ ActionType Input::GetUserAction() const
 			case ITM_INSPECT_VALUE:     return Inspect_Value;
 			case ITM_DSN_MODE:          return DSN_MODE;
 
-			default:                    return SIM_MODE;
+			default:                    return SIM_TOOL;
 			}
 		}
 

@@ -14,9 +14,9 @@ Output::Output()
 	UI.ConnColor = RED;
 	UI.MsgColor = BLUE;
 	UI.BkGrndColor = WHITE;
-	
+
 	//Create the drawing window
-	pWind = CreateWind(UI.width, UI.height, UI.wx, UI.wy);	
+	pWind = CreateWind(UI.width, UI.height, UI.wx, UI.wy);
 	ChangeTitle("Programming Techniques Project");
 
 	CreateDesignToolBar();	//Create the desgin toolbar
@@ -48,8 +48,8 @@ void Output::ChangeTitle(string Title) const
 //////////////////////////////////////////////////////////////////////////////////
 void Output::CreateStatusBar() const
 {
-	pWind->SetPen(BLACK,3);
-	pWind->DrawLine(0, UI.height-UI.StatusBarHeight, UI.width, UI.height-UI.StatusBarHeight);
+	pWind->SetPen(BLACK, 3);
+	pWind->DrawLine(0, UI.height - UI.StatusBarHeight, UI.width, UI.height - UI.StatusBarHeight);
 }
 //////////////////////////////////////////////////////////////////////////////////
 void Output::PrintMsg(string msg) const
@@ -60,8 +60,8 @@ void Output::PrintMsg(string msg) const
 	int MsgY = UI.StatusBarHeight - 10;
 
 	// Print the Message
-    pWind->SetFont(20, BOLD | ITALICIZED, BY_NAME, "Arial"); 
-	pWind->SetPen(UI.MsgColor); 
+	pWind->SetFont(20, BOLD | ITALICIZED, BY_NAME, "Arial");
+	pWind->SetPen(UI.MsgColor);
 	pWind->DrawString(MsgX, UI.height - MsgY, msg);
 }
 //////////////////////////////////////////////////////////////////////////////////
@@ -83,7 +83,13 @@ void Output::ClearDrawingArea() const
 	pWind->SetPen(BLACK, 1);
 	pWind->SetBrush(WHITE);
 	pWind->DrawRectangle(0, UI.ToolBarHeight, UI.width, UI.height - UI.StatusBarHeight);
-	
+
+}
+void Output::ClearToolBar() const
+{
+	pWind->SetPen(WHITE, 1);
+	pWind->SetBrush(WHITE);
+	pWind->DrawRectangle(0, 0, UI.width, UI.ToolBarHeight);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 //Draws the menu (toolbar) in the Design mode
@@ -102,7 +108,7 @@ void Output::CreateDesignToolBar() const
 	MenuItemImages[ITM_OR2] = "images\\Menu\\Menu_OR2.jpg";
 	MenuItemImages[ITM_OR3] = "images\\Menu\\Menu_OR3.jpg";
 	MenuItemImages[ITM_NOR2] = "images\\Menu\\Menu_NOR2.jpg";
-	MenuItemImages[ITM_NOR3]  = "images\\Menu\\Menu_NOR3.jpg";
+	MenuItemImages[ITM_NOR3] = "images\\Menu\\Menu_NOR3.jpg";
 	MenuItemImages[ITM_XOR2] = "images\\Menu\\Menu_XOR2.jpg";
 	MenuItemImages[ITM_XOR3] = "images\\Menu\\Menu_XOR3.jpg";
 	MenuItemImages[ITM_XNOR2] = "images\\Menu\\Menu_XNOR2.jpg";
@@ -128,13 +134,13 @@ void Output::CreateDesignToolBar() const
 	//TODO: Prepare image for each menu item and add it to the list
 
 	//Draw menu item one image at a time
-	for(int i=0; i<ITM_DSN_CNT; i++)
-		pWind->DrawImage(MenuItemImages[i],i*UI.ToolItemWidth,0,UI.ToolItemWidth, UI.ToolBarHeight);
-	
+	for (int i = 0; i < ITM_DSN_CNT; i++)
+		pWind->DrawImage(MenuItemImages[i], i * UI.ToolItemWidth, 0, UI.ToolItemWidth, UI.ToolBarHeight);
+
 
 	//Draw a line under the toolbar
-	pWind->SetPen(BLACK,3);
-	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);	
+	pWind->SetPen(BLACK, 3);
+	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
 
 }
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -149,9 +155,9 @@ void Output::CreateSimulationToolBar() const
 	MenuItemImages[ITM_TRUTH] = "images\\Menu\\Menu_Create_Truth_Table.jpg";
 	MenuItemImages[ITM_SWITCH_CHANGE] = "images\\Menu\\Menu_Change_Switch.jpg";
 	MenuItemImages[ITM_CHECK_VALIDATION] = "images\\Menu\\Menu_Check_Validation.jpg";
-	MenuItemImages[ITM_INSPECT_VALUE] = "images\\Menu\\Menu_Exit.jpg";
+	MenuItemImages[ITM_INSPECT_VALUE] =    "images\\Menu\\Menu_Inspect_Value.jpg";
 	MenuItemImages[ITM_DSN_MODE] = "images\\Menu\\Menu_Design_Mode.jpg";
-
+	ClearToolBar();
 
 
 	//Draw menu item one image at a time
@@ -173,9 +179,9 @@ void Output::CreateSimulationToolBar() const
 void Output::DrawAND2(GraphicsInfo r_GfxInfo, bool selected) const
 {
 	string GateImage;
-	if(selected)	//use image in the highlighted case
-		GateImage="Images\\Gates\\Gate_AND2_Hi.jpg";
-	else  
+	if (selected)	//use image in the highlighted case
+		GateImage = "Images\\Gates\\Gate_AND2_Hi.jpg";
+	else
 		GateImage = "Images\\Gates\\Gate_AND2.jpg";
 
 	//Draw AND2 Gate at Gfx_Info (1st corner)
@@ -192,8 +198,8 @@ void Output::DrawAND3(GraphicsInfo r_GfxInfo, bool selected) const
 	else
 		GateImage = "Images\\Gates\\Gate_AND3.jpg";
 
-	
-	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+
+	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND3_Width, UI.AND3_Height);
 }
 
 void Output::DrawNAND2(GraphicsInfo r_GfxInfo, bool selected) const
@@ -204,8 +210,8 @@ void Output::DrawNAND2(GraphicsInfo r_GfxInfo, bool selected) const
 	else
 		GateImage = "Images\\Gates\\Gate_NAND2.jpg";
 
-	
-	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+
+	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.NAND2_Width, UI.NAND2_Height);
 }
 
 void Output::DrawNAND3(GraphicsInfo r_GfxInfo, bool selected) const
@@ -216,13 +222,47 @@ void Output::DrawNAND3(GraphicsInfo r_GfxInfo, bool selected) const
 	else
 		GateImage = "Images\\Gates\\Gate_NAND3.jpg";
 
-	
-	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+
+	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.NAND3_Width, UI.NAND3_Height);
 }
 
-void Output::DrawSwitch(GraphicsInfo r_GfxInfo, bool selected) const {
 
+void Output::DrawSwitch(GraphicsInfo r_GfxInfo, bool selected) const
+{
+
+
+	const int SWITCH_WIDTH = 50;  // width of switch rectangle
+	const int SWITCH_HEIGHT = 30; // height of switch rectangle
+
+
+	// Determine color for selection
+	color drawColor = selected ? RED : BLACK;
+	color fillColor = LIGHTGRAY;
+	color nodeColor = selected ? RED : GREEN;
+
+	// Set pen and brush
+	pWind->SetPen(drawColor, 3);   // border thickness 3
+	pWind->SetBrush(fillColor);
+
+	// Draw the rectangle representing the switch
+	int x = r_GfxInfo.x1;  // top-left x
+	int y = r_GfxInfo.y1;  // top-left y
+	int x2 = x + SWITCH_WIDTH;
+	int y2 = y + SWITCH_HEIGHT;
+
+	pWind->DrawRectangle(x, y, x2, y2);
+
+	// Draw the small toggle circle inside rectangle
+	int circleRadius = 10;
+	int circleX = x2 - circleRadius - 5;
+	int circleY = y + SWITCH_HEIGHT / 2;
+
+	pWind->SetBrush(nodeColor);
+	pWind->DrawCircle(circleX, circleY, circleRadius);
 }
+
+
+
 
 void Output::DrawINV(GraphicsInfo r_GfxInfo, bool selected) const
 {
@@ -233,7 +273,7 @@ void Output::DrawINV(GraphicsInfo r_GfxInfo, bool selected) const
 		GateImage = "Images\\Gates\\Gate_INV.jpg";
 
 
-	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.INV_Width, UI.INV_Height);
 }
 
 void Output::DrawXOR2(GraphicsInfo r_GfxInfo, bool selected) const
@@ -245,7 +285,7 @@ void Output::DrawXOR2(GraphicsInfo r_GfxInfo, bool selected) const
 		GateImage = "Images\\Gates\\Gate_XOR2.jpg";
 
 
-	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.XOR2_Width, UI.XOR2_Height);
 }
 
 void Output::DrawXOR3(GraphicsInfo r_GfxInfo, bool selected) const
@@ -257,7 +297,7 @@ void Output::DrawXOR3(GraphicsInfo r_GfxInfo, bool selected) const
 		GateImage = "Images\\Gates\\Gate_XOR3.jpg";
 
 
-	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.XOR3_Width, UI.XOR3_Height);
 }
 
 void Output::DrawXNOR2(GraphicsInfo r_GfxInfo, bool selected) const
@@ -269,7 +309,7 @@ void Output::DrawXNOR2(GraphicsInfo r_GfxInfo, bool selected) const
 		GateImage = "Images\\Gates\\Gate_XNOR2.jpg";
 
 
-	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.XNOR2_Width, UI.XNOR2_Height);
 }
 
 void Output::DrawXNOR3(GraphicsInfo r_GfxInfo, bool selected) const
@@ -281,7 +321,7 @@ void Output::DrawXNOR3(GraphicsInfo r_GfxInfo, bool selected) const
 		GateImage = "Images\\Gates\\Gate_XNOR3.jpg";
 
 
-	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.XNOR3_Width, UI.XNOR3_Height);
 }
 
 void Output::DrawOR2(GraphicsInfo r_GfxInfo, bool selected) const
@@ -293,7 +333,7 @@ void Output::DrawOR2(GraphicsInfo r_GfxInfo, bool selected) const
 		GateImage = "Images\\Gates\\Gate_OR2.jpg";
 
 
-	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.OR2_Width, UI.OR2_Height);
 }
 
 void Output::DrawOR3(GraphicsInfo r_GfxInfo, bool selected) const
@@ -305,7 +345,7 @@ void Output::DrawOR3(GraphicsInfo r_GfxInfo, bool selected) const
 		GateImage = "Images\\Gates\\Gate_OR3.jpg";
 
 
-	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.OR3_Width, UI.OR3_Height);
 }
 
 void Output::DrawNOR2(GraphicsInfo r_GfxInfo, bool selected) const
@@ -317,7 +357,7 @@ void Output::DrawNOR2(GraphicsInfo r_GfxInfo, bool selected) const
 		GateImage = "Images\\Gates\\Gate_NOR2.jpg";
 
 
-	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.NOR2_Width, UI.NOR2_Height);
 }
 
 void Output::DrawNOR3(GraphicsInfo r_GfxInfo, bool selected) const
@@ -329,7 +369,7 @@ void Output::DrawNOR3(GraphicsInfo r_GfxInfo, bool selected) const
 		GateImage = "Images\\Gates\\Gate_NOR3.jpg";
 
 
-	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.NOR3_Width, UI.NOR3_Height);
 }
 
 void Output::DrawBUFF(GraphicsInfo r_GfxInfo, bool selected) const
@@ -341,19 +381,63 @@ void Output::DrawBUFF(GraphicsInfo r_GfxInfo, bool selected) const
 		GateImage = "Images\\Gates\\Gate_BUFF.jpg";
 
 
-	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.BUFF_Width, UI.BUFF_Height);
 }
 
-void Output::DrawLED(GraphicsInfo r_GfxInfo, bool selected) const
+void Output::DrawLED(GraphicsInfo r_GfxInfo, bool isOn, bool selected) const
 {
+	string GateImage;
+	if (selected)	//use image in the highlighted case
+		GateImage = "Images\\Gates\\LED_Hi.jpg";
+	else
+	{
+		if (isOn)
+			GateImage = "Images\\Gates\\LED_On.jpg";
+		else
+			GateImage = "Images\\Gates\\LED_Off.jpg";
+	}
+
+
+
+	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.LED_Width, UI.LED_Height);
+
 }
 
 
 
 void Output::DrawConnection(GraphicsInfo r_GfxInfo, bool selected) const
 {
+
 	//TODO: Add code to draw connection
+
+
+
+
+	color drawcolor = selected ? RED : BLACK;
+	pWind->SetPen(drawcolor, 3);
+
+	int x1 = r_GfxInfo.x1;
+	int y1 = r_GfxInfo.y1;
+	int x2 = r_GfxInfo.x2;
+	int y2 = r_GfxInfo.y2;
+
+	if (y1 == y2)
+	{
+		// Straight
+		pWind->DrawLine(x1, y1, x2, y2);
+	}
+	else
+	{
+		// broken (horizontal ? vertical ? horizontal)
+		int xm = (x1 + x2) / 2;
+		pWind->DrawLine(x1, y1, xm, y1);
+		pWind->DrawLine(xm, y1, xm, y2);
+		pWind->DrawLine(xm, y2, x2, y2);
+
+	}
 }
+
+
 
 
 Output::~Output()
