@@ -462,8 +462,9 @@ int main()
 		case Inspect_Value:
 			pOut->PrintMsg("Action: Inspect Value of a Pin, Click anywhere");
 			break;
-
-
+		case Start_Simulation:
+			pOut->PrintMsg("Action: Start of Simulation, Click anywhere");
+			break;
 			// MODE SWITCHING 
 		case SIM_MODE:
 			pOut->PrintMsg("Action: Switch to Simulation Mode");
@@ -485,7 +486,9 @@ int main()
 			pOut->PrintMsg("Action: Clicked empty area in Toolbar, Click anywhere");
 			break;
 
-
+		case SIM_TOOL:
+			pOut->PrintMsg("Action: Clicked empty area in Toolbar, Click anywhere");
+			break;
 			// EXIT
 		case EXIT:
 			break;

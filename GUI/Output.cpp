@@ -155,7 +155,7 @@ void Output::CreateSimulationToolBar() const
 	MenuItemImages[ITM_TRUTH] = "images\\Menu\\Menu_Create_Truth_Table.jpg";
 	MenuItemImages[ITM_SWITCH_CHANGE] = "images\\Menu\\Menu_Change_Switch.jpg";
 	MenuItemImages[ITM_CHECK_VALIDATION] = "images\\Menu\\Menu_Check_Validation.jpg";
-	MenuItemImages[ITM_INSPECT_VALUE] =    "images\\Menu\\Menu_Inspect_Value.jpg";
+	MenuItemImages[ITM_INSPECT_VALUE] = "images\\Menu\\Menu_Inspect_Value.jpg";
 	MenuItemImages[ITM_DSN_MODE] = "images\\Menu\\Menu_Design_Mode.jpg";
 	ClearToolBar();
 

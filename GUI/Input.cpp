@@ -145,7 +145,7 @@ ActionType Input::GetUserAction() const
 
 			switch (ClickedItemOrder)
 			{
-			case ITM_SIM:               return SIM_MODE;
+			case ITM_SIM:               return Start_Simulation;
 			case ITM_TRUTH:             return Create_TruthTable;
 			case ITM_SWITCH_CHANGE:     return Change_Switch;
 			case ITM_CHECK_VALIDATION:  return Check_Validation;

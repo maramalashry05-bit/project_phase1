@@ -32,7 +32,7 @@ enum ActionType
 
 	ADD_Label,			// Add Label to a Component or Connection
 	EDIT_Label,			// Edit Label of a Component or Connection
-
+	Start_Simulation,   // Start the simulation 
 	Create_TruthTable,	// Create Truth Table of the Circuit
 	Change_Switch,		// Change Switch Status in Simulation Mode
 	Check_Validation,    // Check all pins are connected and no component is floating
