@@ -8,15 +8,24 @@ enum ActionType
 {
 	ADD_Buff,			// Add 1-input Buffer gate
 	ADD_INV,			// Add 1-input Inverter gate
+
 	ADD_AND_GATE_2,		// Add 2-input AND gate
-	ADD_OR_GATE_2,		// Add 2-input OR gate
-	ADD_NAND_GATE_2,	// Add 2-input NAND gate
-	ADD_NOR_GATE_2,		// Add 2-input NOR gate
-	ADD_XOR_GATE_2,		// Add 2-input XOR gate
-	ADD_XNOR_GATE_2,	// Add 2-input XNOR gate
 	ADD_AND_GATE_3,		// Add 3-input AND gate
+	ADD_NAND_GATE_2,	// Add 2-input NAND gate
+	ADD_NAND_GATE_3,	// Add 3-input NAND gate
+
+	ADD_OR_GATE_2,		// Add 2-input OR gate
+	ADD_OR_GATE_3,		// Add 3-input OR gate
+	ADD_NOR_GATE_2,		// Add 2-input NOR gate
 	ADD_NOR_GATE_3,		// Add 3-input NOR gate
+
+	ADD_XOR_GATE_2,		// Add 2-input XOR gate
 	ADD_XOR_GATE_3,		// Add 3-input XOR gate
+	ADD_XNOR_GATE_2,	// Add 2-input XNOR gate
+	ADD_XNOR_GATE_3,	// Add 3-input XNOR gate
+	
+	
+	
 	ADD_Switch,			// Add Switch
 	ADD_LED,			// Add LED
 	ADD_CONNECTION,		// Add Wire Connection
@@ -52,7 +61,9 @@ enum ActionType
 	EXIT,				// Exit the application
 
 	STATUS_BAR,			// A click on the status bar
-	DSN_TOOL			// A click on an empty place in the design tool bar
+
+	DSN_TOOL,			// A click on an empty place in the design tool bar
+	SIM_TOOL			// A click on an empty place in the simulation tool bar
 };
 
 //Possible Status for the pin

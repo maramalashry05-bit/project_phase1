@@ -69,26 +69,27 @@ ActionType Input::GetUserAction() const
 
 			switch (ClickedItemOrder)
 			{
-				// GATES 2 & 3 INPUT
+				// GATES AND,NAND
+
 			case ITM_AND2:     return ADD_AND_GATE_2;
 			case ITM_AND3:     return ADD_AND_GATE_3;
 			case ITM_NAND2:    return ADD_NAND_GATE_2;
-			case ITM_NAND3:
-				return DSN_TOOL;
+			case ITM_NAND3:    return ADD_NAND_GATE_3;
+				
+				//GATES OR,NOR
 
 			case ITM_OR2:      return ADD_OR_GATE_2;
-			case ITM_OR3:
-				return DSN_TOOL;
-
+			case ITM_OR3:      return ADD_OR_GATE_3;
 			case ITM_NOR2:     return ADD_NOR_GATE_2;
 			case ITM_NOR3:     return ADD_NOR_GATE_3;
 
+				//GATES XOR,XNOR
+
 			case ITM_XOR2:     return ADD_XOR_GATE_2;
 			case ITM_XOR3:     return ADD_XOR_GATE_3;
-
 			case ITM_XNOR2:    return ADD_XNOR_GATE_2;
-			case ITM_XNOR3:
-				return DSN_TOOL;
+			case ITM_XNOR3:    return ADD_XNOR_GATE_3;
+				
 
 				// BASIC COMPONENTS
 			case ITM_SWITCH:        return ADD_Switch;
@@ -118,7 +119,7 @@ ActionType Input::GetUserAction() const
 
 				// MODE SWITCH
 			case ITM_SIM_MODE:      return SIM_MODE;
-
+	
 				// EXIT 
 			case ITM_EXIT:          return EXIT;
 
@@ -137,7 +138,7 @@ ActionType Input::GetUserAction() const
 	}
 	else	//Application is in Simulation mode
 	{
-		// Click on simulation toolbar 
+		//[1] If user clicks on the Toolbar
 		if (y >= 0 && y < UI.ToolBarHeight)
 		{
 			int ClickedItemOrder = x / UI.ToolItemWidth;
@@ -155,11 +156,11 @@ ActionType Input::GetUserAction() const
 			}
 		}
 
-		// Drawing area 
+		//[2] User clicks on the simulation area
 		if (y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
 			return SELECT;
 
-		// Status Bar
+		//[3] User clicks on the status bar
 		return STATUS_BAR;
 	}
 }
