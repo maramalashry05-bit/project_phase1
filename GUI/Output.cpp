@@ -1,4 +1,6 @@
 #include "Output.h"
+#include <iostream>
+
 
 Output::Output()
 {
@@ -130,7 +132,7 @@ void Output::CreateDesignToolBar() const
 	//Draw menu item one image at a time
 	for(int i=0; i<ITM_DSN_CNT; i++)
 		pWind->DrawImage(MenuItemImages[i],i*UI.ToolItemWidth,0,UI.ToolItemWidth, UI.ToolBarHeight);
-
+	
 
 	//Draw a line under the toolbar
 	pWind->SetPen(RED,3);
@@ -221,6 +223,23 @@ void Output::DrawNAND3(GraphicsInfo r_GfxInfo, bool selected) const
 
 void Output::DrawSwitch(GraphicsInfo r_GfxInfo, bool selected) const
 {
+	color drawColor = selected ? RED : BLACK;
+	color fillcolor = selected ? GREEN : GREY;// Green means switch is closed and Grey means switch is open
+	pWind->SetPen(drawColor, 3);
+
+	int x1 = r_GfxInfo.x1;
+	int y1 = r_GfxInfo.y1;
+	int x2 = r_GfxInfo.x2;
+	int y2 = r_GfxInfo.y2;
+
+	pWind->DrawLine(x1, y1, x2, y2);
+
+	pWind->SetBrush(fillcolor);
+
+	int circx = (x1 + x2) / 2;
+	int circy = (y1 + y2) / 2;
+
+	pWind->DrawCircle(circx, circy, 10);
 }
 
 //TODO: Add similar functions to draw all components
@@ -229,6 +248,8 @@ void Output::DrawSwitch(GraphicsInfo r_GfxInfo, bool selected) const
 void Output::DrawConnection(GraphicsInfo r_GfxInfo, bool selected) const
 {
 	//TODO: Add code to draw connection
+	
+
 }
 
 

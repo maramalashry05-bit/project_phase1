@@ -94,6 +94,17 @@ int main()
 	pOut->PrintMsg("Drawing 3-input AND, NOR, XOR Gates, Normal and Highlighted,  Click to continue");
 	
 	///TODO: Add code to draw 3-input AND, NOR, and XOR Gates, Normal and Highlighted for each
+	pOut->PrintMsg("Drawing 3-input AND gate, Normal and Highlighted,  Click to continue");
+
+	
+
+	//Drawing Normal AND3 gate
+	GfxInfo.x1 = 100;	GfxInfo.y1 = 100;
+	pOut->DrawAND3(GfxInfo);
+
+	//Drawing Highlighted AND3 gate
+	GfxInfo.x1 = 100;	GfxInfo.y1 = 200;
+	pOut->DrawAND3(GfxInfo, true);
 
 
 	pIn->GetPointClicked(x,y);	//Wait for any click
@@ -101,8 +112,21 @@ int main()
 
 	/// 2.7- Switch and LED test
 	pOut->PrintMsg("Drawing Switch and LED, Normal and Highlighted,  Click to continue");
+
 	
 	///TODO: Add code to draw Switch and LED, Normal and Highlighted for each
+
+	pOut->PrintMsg("Drawing Switch, Normal and Highlighted,  Click to continue");
+
+	
+
+	//Drawing Normal Switch
+	GfxInfo.x1 = 100;	GfxInfo.y1 = 100;
+	pOut->DrawSwitch(GfxInfo);
+
+	//Drawing Highlighted Switch
+	GfxInfo.x1 = 100;	GfxInfo.y1 = 200;
+	pOut->DrawSwitch(GfxInfo, true);
 
 	pIn->GetPointClicked(x,y);	//Wait for any click
 	pOut->ClearDrawingArea();
@@ -150,8 +174,14 @@ int main()
 	///////////////////////////////////////////////////////////////////////////////////
 	pOut->PrintMsg("TEST4: Testing Input ability to detect User Action, click anywhere");
 
+	///////////////////////////////////////////////////////////////////////////////////
+// TEST 4: Check for the user action
+///////////////////////////////////////////////////////////////////////////////////
+	pOut->PrintMsg("TEST4: Testing Input ability to detect User Action, click anywhere");
+	pIn->GetPointClicked(x, y);
+
 	ActionType ActType;
-	
+
 	///TODO:  You must add a case for each action
 	//Add cases for the missing actions below
 	do
@@ -160,65 +190,174 @@ int main()
 
 		switch (ActType)
 		{
+			// GATES
 		case ADD_Buff:
-				pOut->PrintMsg("Action: add a buffer gate , Click anywhere");
-				break;
+			pOut->PrintMsg("Action: add Buffer gate, Click anywhere");
+			break;
 
 		case ADD_INV:
-				pOut->PrintMsg("Action: add an inverter gate , Click anywhere");
-				break;
+			pOut->PrintMsg("Action: add Inverter gate, Click anywhere");
+			break;
 
 		case ADD_AND_GATE_2:
-				pOut->PrintMsg("Action: add 2-input AND gate , Click anywhere");
-				break;
+			pOut->PrintMsg("Action: add 2-input AND gate, Click anywhere");
+			break;
+
+		case ADD_AND_GATE_3:
+			pOut->PrintMsg("Action: add 3-input AND gate, Click anywhere");
+			break;
 
 		case ADD_NAND_GATE_2:
-				pOut->PrintMsg("Action: add 2-input NAND gate , Click anywhere");
-				break;
-
-		case ADD_OR_GATE_2:
-				pOut->PrintMsg("Action: add 2-input OR gate , Click anywhere");
-				break;
+			pOut->PrintMsg("Action: add 2-input NAND gate, Click anywhere");
+			break;
 
 		case ADD_NOR_GATE_2:
-				pOut->PrintMsg("Action: add 2-input NOR gate , Click anywhere");
-				break;
+			pOut->PrintMsg("Action: add 2-input NOR gate, Click anywhere");
+			break;
+
+		case ADD_NOR_GATE_3:
+			pOut->PrintMsg("Action: add 3-input NOR gate, Click anywhere");
+			break;
+
+		case ADD_OR_GATE_2:
+			pOut->PrintMsg("Action: add 2-input OR gate, Click anywhere");
+			break;
 
 		case ADD_XOR_GATE_2:
-				pOut->PrintMsg("Action: add 2-input XOR gate , Click anywhere");
-				break;
+			pOut->PrintMsg("Action: add 2-input XOR gate, Click anywhere");
+			break;
+
+		case ADD_XOR_GATE_3:
+			pOut->PrintMsg("Action: add 3-input XOR gate, Click anywhere");
+			break;
 
 		case ADD_XNOR_GATE_2:
-				pOut->PrintMsg("Action: add 2-input XNOR gate , Click anywhere");
-				break;
+			pOut->PrintMsg("Action: add 2-input XNOR gate, Click anywhere");
+			break;
 
+			// COMPONENTS
+		case ADD_Switch:
+			pOut->PrintMsg("Action: add Switch, Click anywhere");
+			break;
+
+		case ADD_LED:
+			pOut->PrintMsg("Action: add LED, Click anywhere");
+			break;
+
+		case ADD_CONNECTION:
+			pOut->PrintMsg("Action: add Connection / Wire, Click anywhere");
+			break;
+
+
+			// LABELS
+		case ADD_Label:
+			pOut->PrintMsg("Action: add Label, Click anywhere");
+			break;
+
+		case EDIT_Label:
+			pOut->PrintMsg("Action: edit Label, Click anywhere");
+			break;
+
+
+			// FILE OPERATIONS 
+		case SAVE:
+			pOut->PrintMsg("Action: save Circuit, Click anywhere");
+			break;
+
+		case LOAD:
+			pOut->PrintMsg("Action: load Circuit, Click anywhere");
+			break;
+
+
+			// COPY / CUT / PASTE
+			pOut->PrintMsg("Action: Copy Component, Click anywhere");
+			break;
+
+		case CUT:
+			pOut->PrintMsg("Action: Cut Component, Click anywhere");
+			break;
+
+		case PASTE:
+			pOut->PrintMsg("Action: Paste Component, Click anywhere");
+			break;
+
+
+			// EDITING 
 		case SELECT:
-				pOut->PrintMsg("Action: a click on the Drawing area, Click anywhere");
-				break;
-			
-		case STATUS_BAR:
-				pOut->PrintMsg("Action: a click on the Status Bar, Click anywhere");
-				break;
- 
-		case DSN_TOOL:
-				pOut->PrintMsg("Action: a click on empty area in the Design Tool Bar, Click anywhere");
-				break;
+			pOut->PrintMsg("Action: Select Component, Click anywhere");
+			break;
 
+		case MOVE:
+			pOut->PrintMsg("Action: Move Component, Click anywhere");
+			break;
+
+		case DEL:
+			pOut->PrintMsg("Action: Delete Component, Click anywhere");
+			break;
+
+
+			// UNDO/REDO
+		case UNDO:
+			pOut->PrintMsg("Action: Undo Last Action, Click anywhere");
+			break;
+
+		case REDO:
+			pOut->PrintMsg("Action: Redo Last Action, Click anywhere");
+			break;
+
+
+			// SIMULATION FEATURES 
+		case Create_TruthTable:
+			pOut->PrintMsg("Action: Create Truth Table, Click anywhere");
+			break;
+
+		case Change_Switch:
+			pOut->PrintMsg("Action: Change Switch State, Click anywhere");
+			break;
+
+		case Check_Validation:
+			pOut->PrintMsg("Action: Check Circuit Validation, Click anywhere");
+			break;
+
+		case Inspect_Value:
+			pOut->PrintMsg("Action: Inspect Value of a Pin, Click anywhere");
+			break;
+
+
+			// MODE SWITCHING 
 		case SIM_MODE:
-				pOut->PrintMsg("Action: Switch to Simulation Mode, creating simualtion tool bar");
-				pOut->CreateSimulationToolBar();
-				break;
+			pOut->PrintMsg("Action: Switch to Simulation Mode");
+			pOut->CreateSimulationToolBar();
+			break;
 
 		case DSN_MODE:
-				pOut->PrintMsg("Action: Switch to Design Mode, creating Design tool bar");
-				pOut->CreateDesignToolBar();
-				break;
+			pOut->PrintMsg("Action: Switch to Design Mode");
+			pOut->CreateDesignToolBar();
+			break;
 
 
-		case EXIT:				
-				break;
+			// UI REGIONS
+		case STATUS_BAR:
+			pOut->PrintMsg("Action: Clicked on Status Bar, Click anywhere");
+			break;
+
+		case DSN_TOOL:
+			pOut->PrintMsg("Action: Clicked empty area in Toolbar, Click anywhere");
+			break;
+
+
+			// EXIT
+		case EXIT:
+			break;
+
+		default:
+			pOut->PrintMsg("Action: Unknown action!");
+			break;
 		}
-	}while(ActType != EXIT);
+
+		pIn->GetPointClicked(x, y);   // Wait after every message
+
+	} while (ActType != EXIT);
 
 
 	/// Exiting
